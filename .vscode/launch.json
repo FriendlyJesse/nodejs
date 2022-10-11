@@ -7,7 +7,8 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Node 运行环境",
+      "name": "Node debug",
+      "runtimeExecutable": "nodemon",
       "skipFiles": [
         "<node_internals>/**"
       ],
