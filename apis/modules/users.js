@@ -1,9 +1,11 @@
 const { Router } = require('express')
+const expressJoi = require('@escook/express-joi')
+const  usersModel = require('../../models/users')
+const { regLoginSchema } = require('../../schema/user')
+
 const router = Router()
 
-const  usersModel = require('../../models/users')
-
-router.post('/register', usersModel.register)
+router.post('/register', expressJoi(regLoginSchema), usersModel.register)
 
 router.post('/login', usersModel.login)
 
