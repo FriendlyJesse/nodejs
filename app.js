@@ -4,8 +4,12 @@ const fs = require('fs')
 const path = require('path')
 const logger = require('morgan')
 const joi = require('joi')
+const dotenv = require('dotenv')
 
 const app = express()
+
+// env
+dotenv.config()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -20,9 +24,10 @@ app
   .use(express.urlencoded({ extended: false }))
   .use(express.static(path.join(__dirname, 'public')))
   .use((req, res, next) => { // 信息反馈
-    res.msg = (err, status = 200) => {
+    res.msg = (err, status = 200, result = {}) => {
       res.status(status).send({
-        message: err instanceof Error ? err.message : err
+        message: err instanceof Error ? err.message : err,
+        result
       })
     }
     next()

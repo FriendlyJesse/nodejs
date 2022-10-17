@@ -7,6 +7,6 @@ const router = Router()
 
 router.post('/register', expressJoi(regLoginSchema), usersModel.register)
 
-router.post('/login', usersModel.login)
+router.post('/login', expressJoi(regLoginSchema), usersModel.login)
 
 module.exports = router

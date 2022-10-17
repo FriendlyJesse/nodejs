@@ -4,7 +4,7 @@ const db = mysql.createPool({
   host: '192.168.0.141',
   port: '3307',
   user: 'root',
-  password: '123456',
+  password: process.env.DB_PASSWORD,
   database: 'big_matter'
 })
 
