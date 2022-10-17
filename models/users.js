@@ -37,6 +37,6 @@ exports.login = async (req, res) => {
   const compareResult = bcrypt.compareSync(password, userinfo.password)
   if (!compareResult) return res.msg('登录失败，密码错误！', 400)
   // 生成 Token
-  const token = jwt.sign({ username, id: userinfo.id }, process.env.SECRET_KEY,{ expiresIn: '10h' })
+  const token = jwt.sign({ username, id: userinfo.id }, process.env.SECRET_KEY,{ expiresIn: process.env.EXPIRES_IN })
   res.msg('登录成功！', 200, { token })
 }

@@ -8,5 +8,8 @@ const router = Router()
 router.post('/register', expressJoi(regLoginSchema), usersModel.register)
 
 router.post('/login', expressJoi(regLoginSchema), usersModel.login)
+router.post('/add', (req, res) => {
+  res.send('test')
+})
 
 module.exports = router
