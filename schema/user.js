@@ -1,3 +1,4 @@
+const { string } = require('joi')
 const joi = require('joi')
 
 /**
@@ -22,9 +23,41 @@ const password = joi
   .pattern(/^[\S]{6,12}$/)
   .required()
 
+const nickname = joi
+.string()
+.alphanum()
+.required()
+
+const email = joi.string().email()
+const mobile = joi.string().length(11).pattern(/^[0-9]+$/).required()
+
 exports.regLoginSchema = {
   body: {
     username,
     password
+  }
+}
+
+exports.setUserInfo = {
+  body: {
+    nickname,
+    email,
+    mobile
+  }
+}
+
+exports.resetPassword = {
+  body: {
+    oldPwd: password,
+    // joi.ref('oldPwd') 与引用的值保持一致
+    // joi.not(joi.ref('oldPwd')) 不能等于 oldPwd的值
+    // concat 合并两条规则
+    newPwd: joi.not(joi.ref('oldPwd')).concat(password)
+  }
+}
+
+exports.setAvatar = {
+  body: {
+    avatar: joi.string().required()
   }
 }
