@@ -25,10 +25,10 @@ app
   .use(express.urlencoded({ extended: false }))
   .use(express.static(path.join(__dirname, 'public')))
   .use((req, res, next) => { // 信息反馈
-    res.msg = (err, status = 200, result) => {
+    res.msg = (err, status = 200, data) => {
       res.status(status).send({
         message: err instanceof Error ? err.message : err,
-        result
+        data
       })
     }
     next()

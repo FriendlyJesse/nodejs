@@ -1,4 +1,3 @@
-const { string } = require('joi')
 const joi = require('joi')
 
 /**
