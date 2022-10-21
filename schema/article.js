@@ -30,3 +30,36 @@ exports.setCate = {
     alias
   }
 }
+
+
+
+exports.getArticle = {
+  params: {
+    id
+  }
+}
+
+exports.addArticle = {
+  body: {
+    title: joi.string().min(3).max(20).required(),
+    content: joi.string().required(),
+    cate_id: id,
+    author_id: id
+  }
+}
+
+exports.setArticle = {
+  body: {
+    id,
+    title: joi.string().min(3).max(20).required(),
+    content: joi.string().required(),
+    cate_id: id,
+    author_id: id
+  }
+}
+
+exports.delArticle = {
+  body: {
+    id
+  }
+}

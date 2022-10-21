@@ -4,7 +4,8 @@ const router = Router()
 const routes = {
   '/users': require('./modules/users'),
   '/userinfo': require('./modules/userinfo'),
-  '/article': require('./modules/articleCate'),
+  '/articleCate': require('./modules/articleCate'),
+  '/articles': require('./modules/articles'),
 }
 
 Object.keys(routes).forEach(key => {
